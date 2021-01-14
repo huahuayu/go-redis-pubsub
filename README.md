@@ -12,6 +12,14 @@ go-redis pub sub not working, no message write to the queue.
 
 **step2:** put alice in channel: testChannel1:key1:key2:key3
 
+```go
+	n,err := Client.Publish(ctx,"testChannel1:key1:key2:key3", string(aliceBytes)).Result()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Info(n)
+```
+
 **step3:** put bob & frank in channel: testChannel2:key1:key2:key3
 
 **step4:** listen to both channels.
